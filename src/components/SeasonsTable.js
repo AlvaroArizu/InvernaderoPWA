@@ -10,7 +10,6 @@ function SeasonsTable() {
   const [search, setSearch] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -45,120 +44,77 @@ function SeasonsTable() {
     setFilteredData(filtered);
   }, [search, startDate, endDate, data]);
 
-  const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a[column] > b[column] ? 1 : -1;
-      } else {
-        return a[column] < b[column] ? 1 : -1;
-      }
-    });
-    setFilteredData(sortedData);
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-  };
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   return (
-    <div className="container3 mt-4">
+    <div className="container2 mt-4">
       <h2 className="text-center mb-4">Estaciones</h2>
 
       {/* Filtros */}
-      <div className="row mb-3">
-        <div className="col-md-4">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Buscar estación..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </div>
-        <div className="col-md-3">
-          <input
-            type="date"
-            className="form-control"
-            placeholder="Fecha de inicio"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-        </div>
-        <div className="col-md-3">
-          <input
-            type="date"
-            className="form-control"
-            placeholder="Fecha de fin"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-        </div>
+      <div className="filter-container mb-3">
+        <input
+          type="text"
+          className="form-control mb-2"
+          placeholder="Buscar estación..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <input
+          type="date"
+          className="form-control mb-2"
+          placeholder="Fecha de inicio"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          className="form-control mb-2"
+          placeholder="Fecha de fin"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
       </div>
 
-      {/* Tabla de datos */}
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th onClick={() => handleSort('id')} className="sortable">
-              ID {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th>Estación</th>
-            <th onClick={() => handleSort('temp_min')} className="sortable">
-              Temp Min {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th onClick={() => handleSort('temp_max')} className="sortable">
-              Temp Max {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th onClick={() => handleSort('start_date')} className="sortable">
-              Fecha Inicio {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th onClick={() => handleSort('end_date')} className="sortable">
-              Fecha Fin {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th onClick={() => handleSort('last_modified')} className="sortable">
-              Última Modificación {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((row) => (
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.season_name}</td>
-              <td>{row.temp_min}</td>
-              <td>{row.temp_max}</td>
-              <td>{row.start_date}</td>
-              <td>{row.end_date}</td>
-              <td>{row.last_modified}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Paginación */}
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <span>Página {currentPage} de {totalPages}</span>
-        <div>
-          <button
-            className="btn btn-primary btn-sm me-2"
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >
-            Anterior
-          </button>
-          <button
-            className="btn btn-primary btn-sm"
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >
-            Siguiente
-          </button>
-        </div>
+      {/* Tarjetas de datos */}
+      <div className="card-container">
+        {currentItems.map((row) => (
+          <div className="card" key={row.id}>
+            <h5>Estación: {row.season_name}</h5>
+            <p><strong>ID:</strong> {row.id}</p>
+            <p><strong>Temp Min:</strong> {row.temp_min}°C</p>
+            <p><strong>Temp Max:</strong> {row.temp_max}°C</p>
+            <p><strong>Fecha Inicio:</strong> {row.start_date}</p>
+            <p><strong>Fecha Fin:</strong> {row.end_date}</p>
+            <p><strong>Última Modificación:</strong> {row.last_modified}</p>
+          </div>
+        ))}
       </div>
 
       {error && <p className="text-danger mt-3">{error}</p>}
+
+      {/* Paginación */}
+      <div className="pagination-container">
+        <span>Página {currentPage} de {totalPages}</span>
+        <button
+          className="btn btn-primary"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Anterior
+        </button>
+        <button
+          className="btn btn-primary"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Siguiente
+        </button>
+      </div>
+
+      
 
       {/* Botón para volver atrás */}
       <div className="text-center mt-4">
@@ -174,3 +130,4 @@ function SeasonsTable() {
 }
 
 export default SeasonsTable;
+

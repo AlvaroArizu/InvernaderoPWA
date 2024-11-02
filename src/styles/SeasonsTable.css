@@ -174,3 +174,40 @@ h2 {
       margin-top: 0.5rem; /* Margen en la parte superior para los botones de paginación */
   }
 }
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Ajuste del contenedor principal */
+  .container3 {
+    padding: 1rem; /* Reducir padding en móviles */
+  }
+
+  /* Hacer la tabla scrollable en dispositivos móviles */
+  .table-responsive {
+    overflow-x: auto; /* Agrega scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia en móviles */
+  }
+
+  .table {
+    width: 100%; /* Asegura que la tabla use el ancho completo */
+    min-width: 700px; /* Ajusta el ancho mínimo para mantener columnas visibles */
+  }
+
+  /* Reducir tamaño de fuente en celdas */
+  .table thead th,
+  .table tbody td {
+    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
+    padding: 0.5rem; /* Reduce el padding en celdas */
+  }
+
+  /* Paginación vertical para móviles */
+  .pagination-container {
+    flex-direction: column; /* Coloca los botones de paginación en columna */
+    align-items: flex-start; /* Alinea los botones a la izquierda */
+  }
+
+  .pagination-container .btn {
+    width: 100%; /* Botones de paginación ocupan el ancho completo */
+    margin-bottom: 0.5rem; /* Espacio entre botones */
+  }
+}

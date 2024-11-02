@@ -1,0 +1,149 @@
+/* Variables CSS para colores */
+:root {
+    --primary-color: #4a90e2;
+    --primary-light: #357ABD;
+    --background-color: #f0f4f8;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --error-color: #e57373;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal */
+.temperature-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Título */
+.temperature-title {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Filtros */
+.temperature-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.temperature-filter-container div {
+    flex: 1 1 150px;
+}
+
+.temperature-input {
+    border-radius: 8px;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+}
+
+/* Tarjetas */
+.temperature-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.temperature-card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.2s;
+}
+
+.temperature-card:hover {
+    transform: translateY(-5px);
+}
+
+.temperature-card-title {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.temperature-card p {
+    margin: 0.3rem 0;
+    color: var(--text-color);
+}
+
+/* Paginación */
+.temperature-pagination-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.temperature-pagination-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.temperature-pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Mensajes de error */
+.temperature-error-message {
+    color: var(--error-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Botón "Volver" */
+.temperature-back-btn-container {
+    text-align: center;
+}
+
+.temperature-back-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.temperature-back-btn:hover {
+    background-color: var(--primary-light);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .temperature-container {
+        padding: 1rem;
+    }
+
+    .temperature-filter-container {
+        gap: 0.5rem;
+    }
+
+    .temperature-card {
+        width: 100%;
+    }
+
+    .temperature-pagination-container {
+        flex-direction: column;
+    }
+
+    .temperature-pagination-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

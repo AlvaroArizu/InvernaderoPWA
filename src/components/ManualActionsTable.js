@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { useNavigate } from 'react-router-dom';
 import '../styles/ManualActionsTable.css';
 
 function ManualActionsTable() {
-  const navigate = useNavigate(); // Inicializa useNavigate
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -42,113 +41,79 @@ function ManualActionsTable() {
     setFilteredData(filtered);
   }, [search, startDate, endDate, data]);
 
-  const handleSort = (column) => {
-    const sortedData = [...filteredData].sort((a, b) => {
-      if (sortOrder === 'asc') {
-        return a[column] > b[column] ? 1 : -1;
-      } else {
-        return a[column] < b[column] ? 1 : -1;
-      }
-    });
-    setFilteredData(sortedData);
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-  };
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   return (
-    <div className="container1 mt-4">
-      <h2 className="text-center mb-4">Acciones Manuales</h2>
+    <div className="manual-actions-container mt-4">
+      <h2 className="manual-actions-title text-center mb-4">Acciones Manuales</h2>
 
-      <div className="filter-container p-3 mb-4 rounded shadow-sm">
-        <div className="row">
-          <div className="col-md-4 mb-3 mb-md-0">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Buscar acción..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div className="col-md-3 mb-3 mb-md-0">
-            <input
-              type="date"
-              className="form-control"
-              placeholder="Fecha de inicio"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </div>
-          <div className="col-md-3">
-            <input
-              type="date"
-              className="form-control"
-              placeholder="Fecha de fin"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </div>
-        </div>
+      {/* Filtros */}
+      <div className="manual-actions-filter-container mb-4">
+        <input
+          type="text"
+          className="manual-actions-input"
+          placeholder="Buscar acción..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <input
+          type="date"
+          className="manual-actions-input"
+          placeholder="Fecha de inicio"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          className="manual-actions-input"
+          placeholder="Fecha de fin"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
       </div>
 
-      <table className="table table-striped table-hover">
-        <thead className="table-primary">
-          <tr>
-            <th onClick={() => handleSort('id')} style={{ cursor: 'pointer' }}>
-              ID {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th>Acción</th>
-            <th onClick={() => handleSort('action_date')} style={{ cursor: 'pointer' }}>
-              Fecha {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-            <th onClick={() => handleSort('action_time')} style={{ cursor: 'pointer' }}>
-              Hora {sortOrder === 'asc' ? '▲' : '▼'}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentItems.map((row) => (
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.action}</td>
-              <td>{row.action_date}</td>
-              <td>{row.action_time}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Tarjetas de datos */}
+      <div className="manual-actions-card-container">
+        {currentItems.map((row) => (
+          <div className="manual-actions-card" key={row.id}>
+            <h5 className="manual-actions-card-title">Registro ID: {row.id}</h5>
+            <p><strong>Acción:</strong> {row.action}</p>
+            <p><strong>Fecha:</strong> {row.action_date}</p>
+            <p><strong>Hora:</strong> {row.action_time}</p>
+          </div>
+        ))}
+      </div>
+      {error && <p className="manual-actions-error-message mt-3">{error}</p>}
 
-      <div className="pagination-container d-flex justify-content-between align-items-center">
+      {/* Paginación */}
+      <div className="manual-actions-pagination-container mt-4">
         <span>Página {currentPage} de {totalPages}</span>
-        <div>
-          <button
-            className="btn btn-outline-primary btn-sm me-2"
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-          >
-            Anterior
-          </button>
-          <button
-            className="btn btn-outline-primary btn-sm"
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-          >
-            Siguiente
-          </button>
-        </div>
+        <button
+          className="manual-actions-pagination-btn btn btn-outline-primary btn-sm me-2"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Anterior
+        </button>
+        <button
+          className="manual-actions-pagination-btn btn btn-outline-primary btn-sm"
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+        >
+          Siguiente
+        </button>
       </div>
 
-      {error && <p className="text-danger mt-3">{error}</p>}
+      
 
       {/* Botón para volver atrás */}
-      <div className="text-center mt-4">
+      <div className="manual-actions-back-btn-container text-center mt-4">
         <button
-          className="btn btn-secondary"
-          onClick={() => navigate(-1)} // Vuelve a la página anterior
+          className="manual-actions-back-btn btn btn-secondary"
+          onClick={() => navigate(-1)}
         >
           Volver
         </button>
@@ -158,5 +123,6 @@ function ManualActionsTable() {
 }
 
 export default ManualActionsTable;
+
 
 
