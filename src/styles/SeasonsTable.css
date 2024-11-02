@@ -1,39 +1,35 @@
 /* Variables CSS para colores */
 :root {
-  --primary-color: #4caf50; /* Verde vibrante */
-  --primary-light: #388e3c; /* Verde más oscuro */
-  --secondary-color: #ff9800; /* Naranja */
-  --background-color: #f0f4f8; /* Color de fondo suave */
-  --card-background: #ffffff; /* Color de fondo de la tarjeta */
-  --text-color: #2c3e50; /* Color de texto oscuro */
-  --error-color: #e57373; /* Color de error */
-  --shadow-color: rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  --primary-color: #4caf50;
+  --primary-light: #388e3c;
+  --secondary-color: #ff9800;
+  --background-color: #f0f4f8;
+  --card-background: #ffffff;
+  --text-color: #2c3e50;
+  --error-color: #e57373;
+  --shadow-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Contenedor principal */
 .container2 {
   max-width: 900px;
-  margin: 0 auto; /* Centrar el contenedor */
-  padding: 2rem; /* Padding general */
-  background-color: var(--card-background); /* Fondo blanco */
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 8px 20px var(--shadow-color); /* Sombra más pronunciada */
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px var(--shadow-color);
 }
 
 /* Título */
 h2 {
-  font-family: 'Montserrat', sans-serif; /* Fuente moderna */
+  font-family: 'Montserrat', sans-serif;
   color: var(--text-color);
   text-align: center;
   margin-bottom: 1.5rem;
-  font-size: 2rem; /* Tamaño de fuente más grande */
+  font-size: 2rem;
 }
 
 /* Filtros */
-.row.mb-3 {
-  margin-bottom: 1.5rem; /* Espacio entre filtros y tabla */
-}
-
 .filter-container {
   background-color: var(--background-color);
   padding: 1.5rem;
@@ -43,9 +39,9 @@ h2 {
 
 /* Estilo de los inputs */
 .filter-container .form-control {
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 8px;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
-  border: 1px solid #ced4da; /* Borde gris claro */
+  border: 1px solid #ced4da;
 }
 
 .filter-container .form-control:focus {
@@ -53,161 +49,104 @@ h2 {
   border-color: var(--primary-color);
 }
 
-/* Tabla */
-.table {
+/* Estilo de la tarjeta */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
   margin-top: 20px;
-  border-collapse: collapse;
-  width: 100%; /* Asegura que la tabla use el ancho completo */
-  border-radius: 12px; /* Bordes redondeados */
-  overflow: hidden; /* Esconde bordes redondeados */
 }
 
-.table thead {
-  background-color: var(--primary-color);
-  color: #fff;
-  font-weight: bold;
+.card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.table thead th {
-  padding: 1rem;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo de filas */
-.table tbody tr {
-  transition: background-color 0.3s, transform 0.2s;
+.card h5 {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
-.table tbody tr:hover {
-  background-color: rgba(76, 175, 80, 0.1); /* Color suave al pasar el mouse */
-}
-
-.table tbody tr td {
-  padding: 1rem; /* Aumenta el padding para mayor espacio */
-  vertical-align: middle;
-  border-bottom: 1px solid #dee2e6; /* Borde inferior en las celdas */
-}
-
-/* Ordenación */
-.table th.sortable:hover {
-  text-decoration: underline;
-}
-
-/* Icono de ordenación */
-.table th.sortable:after {
-  content: ' ▼';
-  font-size: 0.8rem;
-  color: #ffffff99;
-  margin-left: 0.3rem;
-  transition: transform 0.3s;
-}
-
-.table th.sortable.asc:after {
-  content: ' ▲';
-  color: #ffffff99;
+.card p {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
 }
 
 /* Paginación */
-.d-flex.justify-content-between.align-items-center {
-  margin-top: 15px; /* Espacio entre la paginación y la tabla */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .pagination-container .btn {
-  border-radius: 8px; /* Bordes redondeados */
+  border-radius: 8px;
   transition: background-color 0.3s, color 0.3s;
-  padding: 0.5rem 1rem; /* Padding para los botones */
+  padding: 0.5rem 1rem;
 }
 
-/* Estilo de los botones */
 .btn-primary {
   background-color: var(--primary-color);
-  color: #fff; /* Color del texto */
-  border: none; /* Sin borde */
+  color: #fff;
+  border: none;
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-light); /* Color más oscuro al pasar el mouse */
+  background-color: var(--primary-light);
 }
 
-/* Mensajes de error */
 .text-danger {
   color: var(--error-color);
   font-weight: bold;
   margin-top: 1rem;
 }
 
-/* Estilo del botón "Volver" */
+/* Botón de "Volver" */
 .btn-secondary {
   background-color: var(--secondary-color);
   color: #fff;
   border: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  padding: 0.75rem 1.25rem; /* Padding */
-  border-radius: 8px; /* Bordes redondeados */
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
 }
 
-/* Efecto al pasar el mouse sobre el botón */
 .btn-secondary:hover {
-  background-color: #fb8c00; /* Color más oscuro al pasar el mouse */
+  background-color: #fb8c00;
 }
 
 /* Responsividad */
 @media (max-width: 768px) {
-  .container {
-      padding: 1rem; /* Reducir padding en móviles */
+  .container2 {
+    padding: 1rem;
   }
 
   .filter-container {
-      padding: 1rem; /* Ajustar padding en móviles */
+    padding: 1rem;
   }
 
-  .table thead th,
-  .table tbody td {
-      font-size: 0.9rem; /* Tamaño de fuente más pequeño en móviles */
+  .card-container {
+    grid-template-columns: 1fr;
   }
 
   .pagination-container {
-      flex-direction: column; /* Pone la paginación en columna en móviles */
-      align-items: flex-start; /* Alinear a la izquierda */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .pagination-container .btn {
-      margin-top: 0.5rem; /* Margen en la parte superior para los botones de paginación */
-  }
-}
-
-/* Responsividad para pantallas pequeñas */
-@media (max-width: 768px) {
-  /* Ajuste del contenedor principal */
-  .container3 {
-    padding: 1rem; /* Reducir padding en móviles */
-  }
-
-  /* Hacer la tabla scrollable en dispositivos móviles */
-  .table-responsive {
-    overflow-x: auto; /* Agrega scroll horizontal */
-    -webkit-overflow-scrolling: touch; /* Mejora la experiencia en móviles */
-  }
-
-  .table {
-    width: 100%; /* Asegura que la tabla use el ancho completo */
-    min-width: 700px; /* Ajusta el ancho mínimo para mantener columnas visibles */
-  }
-
-  /* Reducir tamaño de fuente en celdas */
-  .table thead th,
-  .table tbody td {
-    font-size: 0.8rem; /* Tamaño de fuente más pequeño */
-    padding: 0.5rem; /* Reduce el padding en celdas */
-  }
-
-  /* Paginación vertical para móviles */
-  .pagination-container {
-    flex-direction: column; /* Coloca los botones de paginación en columna */
-    align-items: flex-start; /* Alinea los botones a la izquierda */
-  }
-
-  .pagination-container .btn {
-    width: 100%; /* Botones de paginación ocupan el ancho completo */
-    margin-bottom: 0.5rem; /* Espacio entre botones */
+    width: 100%;
+    margin-bottom: 0.5rem;
   }
 }

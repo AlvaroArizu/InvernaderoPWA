@@ -13,6 +13,7 @@ function SeasonsTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
+  // Obtener datos de la API
   useEffect(() => {
     fetch('http://localhost/getData.php?table=seasons')
       .then((response) => {
@@ -26,6 +27,7 @@ function SeasonsTable() {
       .catch((error) => setError(error.message));
   }, []);
 
+  // Filtro de búsqueda
   useEffect(() => {
     let filtered = data;
 
@@ -114,8 +116,6 @@ function SeasonsTable() {
         </button>
       </div>
 
-      
-
       {/* Botón para volver atrás */}
       <div className="text-center mt-4">
         <button
@@ -130,4 +130,3 @@ function SeasonsTable() {
 }
 
 export default SeasonsTable;
-
