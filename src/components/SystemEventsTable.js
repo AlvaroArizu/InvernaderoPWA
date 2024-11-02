@@ -14,7 +14,7 @@ function SystemEventsTable() {
   const itemsPerPage = 5;
 
   useEffect(() => {
-    fetch('http://localhost/getData.php?table=system_events')
+    fetch('https://springgreen-worm-743165.hostingersite.com/backend/getData.php?table=system_events') // Cambia aquí a la URL de producción
       .then((response) => {
         if (!response.ok) throw new Error('Error en la respuesta de la API');
         return response.json();
@@ -25,6 +25,7 @@ function SystemEventsTable() {
       })
       .catch((error) => setError(error.message));
   }, []);
+  
 
   useEffect(() => {
     let filtered = data;

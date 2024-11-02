@@ -15,7 +15,7 @@ function SeasonsTable() {
 
   // Obtener datos de la API
   useEffect(() => {
-    fetch('http://localhost/getData.php?table=seasons')
+    fetch('https://springgreen-worm-743165.hostingersite.com/backend/getData.php?table=seasons') // Cambia aquí a la URL de producción
       .then((response) => {
         if (!response.ok) throw new Error('Error en la respuesta de la API');
         return response.json();
@@ -26,6 +26,7 @@ function SeasonsTable() {
       })
       .catch((error) => setError(error.message));
   }, []);
+  
 
   // Filtro de búsqueda
   useEffect(() => {
