@@ -1,0 +1,64 @@
+/* Navbar.css */
+
+/* Estilo general de la barra de navegación */
+.navbar {
+  padding: 1rem; /* Espaciado interno de la barra */
+  background-color: #004085; /* Color de fondo más oscuro */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+/* Estilo de la marca de la navbar */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem; /* Aumenta el tamaño de la fuente para una mejor visibilidad */
+  color: #ffd700; /* Color dorado */
+}
+
+/* Estilo del botón de menú hamburguesa */
+.navbar-toggler {
+  border: none; /* Sin borde */
+}
+
+/* Icono del botón toggler */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Estilo de los enlaces de navegación */
+.nav-link {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  color: #fff; /* Color blanco para los enlaces */
+}
+
+/* Estilo al pasar el mouse por encima de los enlaces */
+.nav-link:hover {
+  color: #ffd700; /* Color dorado al pasar el mouse */
+}
+
+/* Estilo para el enlace activo */
+.active {
+  font-weight: bold;
+  color: #ffd700 !important; /* Color dorado para el enlace activo */
+}
+
+/* Para asegurar que el menú esté visible en pantallas grandes */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important; /* Asegura que el menú se muestre como flex */
+  }
+
+  .navbar-toggler {
+    display: none; /* Oculta el botón de menú hamburguesa en pantallas grandes */
+  }
+}
+
+/* Mejora de responsividad para dispositivos móviles */
+@media (max-width: 1208) {
+  .navbar {
+    padding: 0.75rem 1rem; /* Ajuste de padding para pantallas pequeñas */
+  }
+}
+
+
+  

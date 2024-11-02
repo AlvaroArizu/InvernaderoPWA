@@ -1,0 +1,185 @@
+/* Variables CSS para colores */
+:root {
+  --primary-color: #4caf50; /* Verde vibrante */
+  --primary-light: #388e3c; /* Verde más oscuro */
+  --secondary-color: #ff9800; /* Naranja */
+  --background-color: #f0f4f8; /* Color de fondo suave */
+  --card-background: #ffffff; /* Color de fondo de la tarjeta */
+  --text-color: #2c3e50; /* Color de texto oscuro */
+  --error-color: #e57373; /* Color de error */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Contenedor principal */
+.container1 {
+  max-width: 900px;
+  margin: 0 auto; /* Centrar el contenedor */
+  padding: 2rem; /* Padding general */
+  background-color: var(--card-background); /* Fondo blanco */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 8px 20px var(--shadow-color); /* Sombra más pronunciada */
+}
+
+/* Título */
+h2 {
+  font-family: 'Montserrat', sans-serif; /* Fuente moderna */
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem; /* Tamaño de fuente más grande */
+}
+
+/* Filtros */
+.filter-container {
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px var(--shadow-color);
+  margin-bottom: 1.5rem;
+}
+
+.filter-container .form-control {
+  border-radius: 8px; /* Bordes redondeados */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid #ced4da; /* Borde gris claro */
+}
+
+.filter-container .form-control:focus {
+  box-shadow: 0 0 8px var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Tabla */
+.table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%; /* Asegura que la tabla use el ancho completo */
+  border-radius: 12px; /* Bordes redondeados */
+  overflow: hidden; /* Esconde bordes redondeados */
+}
+
+.table thead {
+  background-color: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+}
+
+.table thead th {
+  cursor: pointer;
+  padding: 1rem;
+}
+
+/* Estilo de filas */
+.table tbody tr {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(76, 175, 80, 0.1); /* Color suave al pasar el mouse */
+}
+
+.table tbody tr td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #dee2e6; /* Borde inferior en las celdas */
+}
+
+/* Ordenación */
+.table th.sortable:hover {
+  text-decoration: underline;
+}
+
+/* Icono de ordenación */
+.table th.sortable:after {
+  content: ' ▼';
+  font-size: 0.8rem;
+  color: #ffffff99;
+  margin-left: 0.3rem;
+  transition: transform 0.3s;
+}
+
+.table th.sortable.asc:after {
+  content: ' ▲';
+  color: #ffffff99;
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.pagination-container .btn {
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0.5rem 1rem; /* Padding para los botones */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo de los botones */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff; /* Color del texto */
+  border: none; /* Sin borde */
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light); /* Color más oscuro al pasar el mouse */
+}
+
+/* Mensajes de error */
+.text-danger {
+  color: var(--error-color);
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Estilo del botón "Volver" */
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: #fff; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 0.75rem 1.25rem; /* Padding */
+  font-size: 1rem; /* Tamaño de fuente */
+  font-weight: 500; /* Peso de fuente */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.btn-secondary:hover {
+  background-color: #fb8c00; /* Color más oscuro al pasar el mouse */
+}
+
+/* Efecto al hacer clic en el botón */
+.btn-secondary:active {
+  transform: translateY(0); /* Elimina la elevación al hacer clic */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Sombra más baja al hacer clic */
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .container1 {
+      padding: 0.5rem; /* Reducir padding en móviles */
+  }
+
+  .filter-container {
+      padding: 1rem; /* Ajustar padding en móviles */
+  }
+
+  .table thead th,
+  .table tbody td {
+      font-size: 0.9rem; /* Tamaño de fuente más pequeño en móviles */
+  }
+
+  .pagination-container {
+      flex-direction: column; /* Pone la paginación en columna en móviles */
+      align-items: flex-start; /* Alinear a la izquierda */
+  }
+
+  .pagination-container .btn {
+      margin-top: 0.5rem; /* Margen en la parte superior para los botones de paginación */
+  }
+}

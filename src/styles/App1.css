@@ -1,0 +1,86 @@
+/* Estilos para el encabezado */
+.app-header {
+  background-color: #004085;
+  color: #fff;
+  padding: 1.5rem; /* Increase padding for better appearance */
+  border-bottom: 2px solid #007bff;
+  text-align: center;
+}
+
+/* Ajustes en el título y subtítulo */
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  font-size: 1.2rem;
+}
+
+/* Botones - Contenedor */
+.btn-group-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Adds space between buttons */
+  justify-content: center; /* Center buttons horizontally */
+  padding: 1rem 0; /* Add padding around button container */
+}
+
+/* Botones - Individual */
+.btn-group-container .btn {
+  padding: 0.8rem 2rem; /* Increase padding for larger button size */
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.3rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  min-width: 180px; /* Minimum button width for consistency */
+}
+
+/* Efectos de hover para botones */
+.btn-group-container .btn:hover {
+  transform: translateY(-4px);
+  opacity: 0.95;
+}
+
+/* Custom button colors */
+.custom-btn-primary { background-color: #007bff; color: #fff; }
+.custom-btn-secondary { background-color: #6c757d; color: #fff; }
+.custom-btn-success { background-color: #28a745; color: #fff; }
+.custom-btn-danger { background-color: #dc3545; color: #fff; }
+.custom-btn-info { background-color: #17a2b8; color: #fff; }
+
+/* Responsivo: distribución en pantallas pequeñas */
+@media (max-width: 768px) {
+  .btn-group-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-group-container .btn {
+    width: 100%; /* Full width for mobile */
+    max-width: 300px;
+  }
+}
+
+/* Estilos para las tarjetas */
+.custom-card {
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del footer */
+.app-footer {
+  background-color: #343a40;
+  color: #adb5bd;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
